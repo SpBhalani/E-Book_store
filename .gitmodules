@@ -1,0 +1,3 @@
+[submodule "E-Book-front"]
+	path = E-Book-front
+	url = https://github.com/SpBhalani/E-Book-front.git
