@@ -17,7 +17,6 @@ const SignUp = (req,res) => {
             })
         }
     })
-
 }
 
 const SignIn = (req,res) => {
@@ -29,7 +28,8 @@ const SignIn = (req,res) => {
             if(user.authenticate(req.body.password)){
                 const token = jwt.sign({_id : user._id} , process.env.SCRETE_KEY)
                 res.cookie('token' , token );
-                res.status(200).json({user,token});
+                req.user = user
+               return res.status(200).json({user,token});
             }
             else { 
                 return res.status(401).send("Invalid Password...")
